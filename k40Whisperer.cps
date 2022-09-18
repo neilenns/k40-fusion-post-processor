@@ -131,8 +131,9 @@ function finishPath() {
   }
 
   var opComment = hasParameter("operation-comment") ? getParameter("operation-comment") : "[No Title]";
+  var safeOpComment = opComment.replace(/\s+/g, '_');
 
-  writeln("<g id=\"operation-" + (1 + currentSection.getId()) + "\">");
+  writeln("<g id=\"" + (safeOpComment + "_" + (1 + currentSection.getId())) + "\" inkscape:label=\"" + opComment + "\" inkscape:groupmode=\"layer\">");
   writeln("    <title>" + opComment + " (" + localize("Op") + ": " + (1 + currentSection.getId()) + "/" + getNumberOfSections() + ")</title>");
   writeln("    <path d=\"" + activePathElements.join("\n             ") + "\" "
     + fill() 
@@ -235,7 +236,7 @@ function onOpen() {
   // else dont translate anythng.
 
   writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
-  writeln("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" + width + "mm\" height=\"" + height + "mm\" viewBox=\"0 0 " + width + " " + height + "\">");
+  writeln("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\" width=\"" + width + "mm\" height=\"" + height + "mm\" viewBox=\"0 0 " + width + " " + height + "\">");
   writeln("<desc>Created with " + description + " for Fusion 360. To download visit: " + POST_URL + "</desc>");
 
   // write a comment explaining what info we got from the CAM system about the stock and coordinate system
