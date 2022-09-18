@@ -44,7 +44,7 @@ resetProperties();
 propertyDefinitions = {
   lineWidth: {title: "SVG Stroke Width(mm)", description: "The width of lines in the SVG in mm.", type: "number"},
   margin: {title: "Margin(mm)", description: "Sets the margin in mm when 'Crop to Workpiece' is used.", type: "number"},
-  checkForRadiusCompensation: {title: "Check Sideways Comp.", description: "Check every opperation for Sideways Compensation 'In Computer'. If this is not configured, throw an error.", type: "boolean"},
+  checkForRadiusCompensation: {title: "Check Sideways Comp.", description: "Check every operation for Sideways Compensation 'In Computer'. If this is not configured, throw an error.", type: "boolean"},
   doNotFlipYAxis: {title: "Flip Model", description: "If your part is upside down, check this box to flip it over. (Tip: checking 'Flip Z Axis' in the CAM setup also fixes this)", type: "boolean"},
   useWorkArea: {title:"Use Work Area", description:"Center the toolpaths in an image the size of the defined Work Area.", type:"boolean"},
   autoStockPoint: {title:"Auto Stock Point", description:"Make the final image completly visible reguardless of the selected stock point.", type:"boolean"},
@@ -132,7 +132,7 @@ function finishPath() {
 
   var opComment = hasParameter("operation-comment") ? getParameter("operation-comment") : "[No Title]";
 
-  writeln("<g id=\"opperation-" + (1 + currentSection.getId()) + "\">");
+  writeln("<g id=\"operation-" + (1 + currentSection.getId()) + "\">");
   writeln("    <title>" + opComment + " (" + localize("Op") + ": " + (1 + currentSection.getId()) + "/" + getNumberOfSections() + ")</title>");
   writeln("    <path d=\"" + activePathElements.join("\n             ") + "\" "
     + fill() 
